@@ -1,0 +1,12 @@
+# Dockercomposeはコンテナをどのように起動するかを書く
+
+# Dockercomposeのファイル書きますよ宣言
+version: '3'
+
+services:
+  # コンテナ毎にserviceの下にネストして書く
+  web:
+    # カレントディレクトリーにあるDockerfileをbuildする
+    build: .
+    ports:
+      - '3000:3000'

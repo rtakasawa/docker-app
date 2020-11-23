@@ -1,5 +1,15 @@
-# Dockerfileはコンテナの中身を書く
+# Docker＋RailsのWEBアプリ環境構築
+出典：米国AI開発者がゼロから教えるDocker講座
 
+## 環境
+- Ruby2.6.5
+- Rails5.2.4
+- Postgresql
+
+## 手順
+1. 対象ディレクトリにDockerfileを作成する \
+Dockerfileのコード↓
+```Dockerfile
 # ベースとなるイメージを指定する。
 # 指定したイメージの上に、他のレイヤーが重なる。
 FROM ruby:2.6.5
@@ -20,3 +30,12 @@ WORKDIR /docker-app
 # hostのGemfile,Gemfile.lockをdocker-appディレクトリにコピーする
 COPY Gemfile Gemfile.lock /docker-app/
 RUN bundle install
+```
+
+2. 対象ディレクトリにGemfile、Gemfile.lockを作成する\
+Gemfileのコード↓
+```Gemfile
+source 'https://rubygems.org'
+gem 'rails', '~> 5.2.4'
+```
+※Gemfile.lockは空
