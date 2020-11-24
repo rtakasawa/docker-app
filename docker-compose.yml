@@ -8,5 +8,11 @@ services:
   web:
     # カレントディレクトリーにあるDockerfileをbuildする
     build: .
+    # pabulishするポートを書く。
     ports:
       - '3000:3000'
+    # マウントするディレクトリを指定する
+    volumes:
+      - '.:/docker-app'
+    tty: true
+    stdin_open: true
